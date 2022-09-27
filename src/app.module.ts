@@ -18,6 +18,8 @@ import { Clinic } from './model/clinic.model';
       password: '',
       database: 'clinic_rgb',
       models: [Clinic],
+      autoLoadModels: true,
+      synchronize: true,
     }),
   ],
   controllers: [AppController],

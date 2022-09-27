@@ -1,26 +1,42 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/sequelize';
+import { json, Model } from 'sequelize';
+import { Clinic } from 'src/model/clinic.model';
 import { CreateClinicDto } from './dto/create-clinic.dto';
 import { UpdateClinicDto } from './dto/update-clinic.dto';
 
 @Injectable()
 export class ClinicService {
-  create(createClinicDto: CreateClinicDto) {
-    return 'This action adds a new clinic';
+  constructor(
+    @InjectModel(Clinic) private readonly modelClinic: typeof Clinic,
+  ) {}
+
+  async create(createClinicDto: CreateClinicDto): Promise<Clinic> {
+    const addData = await this.modelClinic.create<Clinic>(createClinicDto);
+    return addData;
   }
 
-  findAll() {
-    return `This action returns all clinic`;
+  async findAll(): Promise<Clinic[]> {
+    const data = await this.modelClinic.findAll();
+    return data;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} clinic`;
+  async findOne(id: number): Promise<Clinic> {
+    const data = await this.modelClinic.findOne<Clinic>({ where: { id } });
+    return data;
   }
 
-  update(id: number, updateClinicDto: UpdateClinicDto) {
-    return `This action updates a #${id} clinic`;
-  }
+  // async update(id: number, updateClinicDto: UpdateClinicDto): Promise<Clinic> {
+  //   //const find = await this.modelClinic.findOne<Clinic>({ where: { id } });
+  //   const updateData = await this.modelClinic.update<Clinic>(
+  //     id,
+  //     updateClinicDto,
+  //   );
+  //   return updateData;
+  // }
 
-  remove(id: number) {
-    return `This action removes a #${id} clinic`;
+  async remove(id: number) {
+    const deleted = await this.modelClinic.destroy({ where: { id } });
+    return deleted;
   }
 }
