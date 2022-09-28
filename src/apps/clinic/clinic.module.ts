@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { ClinicService } from './clinic.service';
 import { ClinicController } from './clinic.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { ClinicApps } from 'src/model/clinic.apps.model';
+import { Clinic } from 'src/model/clinic.model';
 
 @Module({
-  imports: [SequelizeModule.forFeature([ClinicApps])],
+  imports: [SequelizeModule.forFeature([Clinic])],
   controllers: [ClinicController],
   providers: [ClinicService],
 })

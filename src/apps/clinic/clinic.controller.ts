@@ -15,10 +15,10 @@ import { UpdateClinicDto } from './dto/update-clinic.dto';
 export class ClinicController {
   constructor(private readonly clinicService: ClinicService) {}
 
-  @Post()
-  create(@Body() createClinicDto: CreateClinicDto) {
-    return this.clinicService.create(createClinicDto);
-  }
+  // @Post()
+  // create(@Body() createClinicDto: CreateClinicDto) {
+  //   return this.clinicService.create(createClinicDto);
+  // }
 
   @Get()
   findAll() {
@@ -30,13 +30,13 @@ export class ClinicController {
     return this.clinicService.findOne(+id);
   }
 
-  @Put(':id')
-  update(@Param('id') id: string, @Body() updateClinicDto: UpdateClinicDto) {
-    return this.clinicService.update(+id, updateClinicDto);
-  }
+  // @Put(':id')
+  // update(@Param('id') id: string, @Body() updateClinicDto: UpdateClinicDto) {
+  //   return this.clinicService.update(+id, updateClinicDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.clinicService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.clinicService.remove(+id);
+  // }
 }
