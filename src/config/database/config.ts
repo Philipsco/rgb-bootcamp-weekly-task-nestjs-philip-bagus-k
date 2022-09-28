@@ -1,4 +1,3 @@
-import { Module } from '@nestjs/common';
 import { Clinic } from 'src/model/clinic.model';
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
