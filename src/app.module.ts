@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AppsModule } from './apps/apps.module';
 import { CmsModule } from './cms/cms.module';
-import { Clinic } from './model/clinic.model';
+import { ClinicCMS } from './model/clinic.cms.model';
 
 @Module({
   imports: [
@@ -17,7 +17,7 @@ import { Clinic } from './model/clinic.model';
       username: 'root',
       password: '',
       database: 'clinic_rgb',
-      models: [Clinic],
+      models: [ClinicCMS],
       autoLoadModels: true,
       synchronize: true,
     }),

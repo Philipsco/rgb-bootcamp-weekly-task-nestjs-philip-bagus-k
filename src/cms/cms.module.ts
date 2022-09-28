@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { RouterModule } from '@nestjs/core';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Clinic } from 'src/model/clinic.model';
+import { ClinicCMS } from 'src/model/clinic.cms.model';
 import { ClinicModule } from './clinic/clinic.module';
 
 @Module({

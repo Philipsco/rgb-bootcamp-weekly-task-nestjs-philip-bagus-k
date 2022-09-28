@@ -16,17 +16,17 @@ export class ClinicController {
   constructor(private readonly clinicService: ClinicService) {}
 
   @Post()
-  async create(@Body() createClinicDto: CreateClinicDto) {
+  create(@Body() createClinicDto: CreateClinicDto) {
     return this.clinicService.create(createClinicDto);
   }
 
   @Get()
-  async findAll() {
+  findAll() {
     return this.clinicService.findAll();
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: string) {
     return this.clinicService.findOne(+id);
   }
 
@@ -36,7 +36,7 @@ export class ClinicController {
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: string) {
-    return 'Successfully deleted';
+  remove(@Param('id') id: string) {
+    return this.clinicService.remove(+id);
   }
 }
