@@ -1,6 +1,7 @@
 import { Clinic } from 'src/model/clinic.model';
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
+import { Admin } from 'src/model/admin.model';
 
 const env = dotenv.parse(fs.readFileSync('.env'));
 
@@ -11,7 +12,7 @@ export default {
   username: env.DB_USERNAME,
   password: env.DB_PASS,
   database: env.DB_NAME,
-  models: [Clinic],
+  models: [Clinic, Admin],
   autoLoadModels: env.DB_AUTOLOAD_MODEL,
   synchronize: env.DB_SYNC,
 };
