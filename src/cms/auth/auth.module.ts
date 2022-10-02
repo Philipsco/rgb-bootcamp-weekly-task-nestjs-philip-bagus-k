@@ -5,12 +5,16 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { Admin } from 'src/model/admin.model';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
+import { JwtStrategy } from './jwt-strategy';
+import * as dotenv from 'dotenv';
+import * as fs from 'fs';
+const env = dotenv.parse(fs.readFileSync('.env'));
 
 @Module({
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
-      secret: 'PhilscoIDN',
+      secret: env.SECRET_KEY,
       signOptions: {
         expiresIn: 36000,
       },
@@ -18,6 +22,7 @@ import { JwtModule } from '@nestjs/jwt';
     SequelizeModule.forFeature([Admin]),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, JwtStrategy],
+  exports: [JwtStrategy],
 })
 export class AuthModule {}

@@ -1,4 +1,4 @@
-import { Body, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Admin } from 'src/model/admin.model';
 import { AuthCredentialDto } from './dto/auth-credential-dto';
@@ -29,7 +29,7 @@ export class AuthService {
     return this.adminModel.create({ username, password: hash });
   }
 
-  async getAdminByUsername(username): Promise<Admin> {
+  async getAdminByUsername(username: any): Promise<Admin> {
     return this.adminModel.findOne({
       where: { username: username },
     });

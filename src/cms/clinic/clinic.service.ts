@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { json, Model } from 'sequelize';
+import { ClinicFacility } from 'src/model/clinic.facility.model';
 import { Clinic } from 'src/model/clinic.model';
+import { Facility } from 'src/model/facility.model';
 import { CreateClinicDto } from './dto/create-clinic.dto';
 import { UpdateClinicDto } from './dto/update-clinic.dto';
 
@@ -22,7 +24,10 @@ export class ClinicService {
   }
 
   async findOne(id: number): Promise<Clinic> {
-    const data = await this.modelClinic.findOne<Clinic>({ where: { id } });
+    const data = await this.modelClinic.findOne<Clinic>({
+      where: { id },
+      include: [Facility],
+    });
     return data;
   }
 
